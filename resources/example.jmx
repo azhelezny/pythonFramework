@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="test suite variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="QUERY_TIMEOUT" elementType="Argument">
+            <stringProp name="Argument.name">QUERY_TIMEOUT</stringProp>
+            <stringProp name="Argument.value">3600</stringProp>
+            <stringProp name="Argument.desc">timeout value for all test queries</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SERVER" elementType="Argument">
+            <stringProp name="Argument.name">SERVER</stringProp>
+            <stringProp name="Argument.value">srv127</stringProp>
+            <stringProp name="Argument.desc">hostname/IP of the database server to connect to</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LOGDIR" elementType="Argument">
+            <stringProp name="Argument.name">LOGDIR</stringProp>
+            <stringProp name="Argument.value">~/logs/plain-functions-window-avg</stringProp>
+            <stringProp name="Argument.desc">directory for Save Responses to a file Listener</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">SCHEMA</stringProp>
+            <stringProp name="Argument.value">BASIC</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DATADIR" elementType="Argument">
+            <stringProp name="Argument.name">DATADIR</stringProp>
+            <stringProp name="Argument.value">/data/${SCHMEA}/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BADDIR" elementType="Argument">
+            <stringProp name="Argument.name">BADDIR</stringProp>
+            <stringProp name="Argument.value">/BAD</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="REPORTS_DIR" elementType="Argument">
+            <stringProp name="Argument.name">REPORTS_DIR</stringProp>
+            <stringProp name="Argument.value">reports</stringProp>
+            <stringProp name="Argument.desc">reports will be stored here</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_BIGINT_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_BIGINT_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ABI_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_BOOLEAN_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_BOOLEAN_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ABOOL_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_CHAR_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_CHAR_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ACH_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_CHAR_FBD_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_CHAR_FBD_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ACHFBD_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_CLOB_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_CLOB_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ACLO_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_DATE_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_DATE_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ADT_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_DECIMAL_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_DECIMAL_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ADE_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_DOUBLE_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_DOUBLE_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ADO_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_FLOAT_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_FLOAT_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_AFLO_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_INTEGER_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_INTEGER_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_AINT_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_LONG_VARCHAR_FBD_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_LONG_VARCHAR_FBD_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ALVCHFBD_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_LONG_VARCHAR_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_LONG_VARCHAR_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ALVCH_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_NUMERIC_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_NUMERIC_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ANUM_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_REAL_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_REAL_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ARE_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_SMALLINT_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_SMALLINT_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ASINT_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_TIME_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_TIME_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ATI_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_TIMESTAMP_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_TIMESTAMP_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_ATS_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_VARCHAR_FBD_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_VARCHAR_FBD_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_AVCHFBD_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WINDOW_AVG_VARCHAR_SCHEMA" elementType="Argument">
+            <stringProp name="Argument.name">WINDOW_AVG_VARCHAR_SCHEMA</stringProp>
+            <stringProp name="Argument.value">W_AVCH_S</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="test database" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">values(1)</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="dataSource">testDatabase</stringProp>
+        <stringProp name="dbUrl">jdbc:splice://${SERVER}:1527/splicedb</stringProp>
+        <stringProp name="driver">com.splicemachine.db.jdbc.ClientDriver</stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">admin</stringProp>
+        <stringProp name="poolMax">10</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">splice</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="bigint" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1459766460000</longProp>
+        <longProp name="ThreadGroup.end_time">1459766460000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">Disabled due to SPLICE-246</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[33] SELECT column_1, AVG(DISTINCT column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+          <stringProp name="dataSource">testDatabase</stringProp>
+          <stringProp name="query">--QUERY 33
+SELECT column_1, AVG(DISTINCT column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">-- ************** FUNCTION PARAMETERS TESTS **************
+-- *** POSITIVE CASES ***
+-- (POSITIVE) CASE: Max/Min additional option [Distinct] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="3441166">pish</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="inserts" enabled="true"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[1] DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table" enabled="true">
+            <stringProp name="dataSource">testDatabase</stringProp>
+            <stringProp name="query">--QUERY 1
+DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="TestPlan.comments">-- splicetest: ignore-output start
+</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings"/>
+              <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="inserts" enabled="false"/>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[1] DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table" enabled="true">
+              <stringProp name="dataSource">testDatabase</stringProp>
+              <stringProp name="query">--QUERY 1
+DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="TestPlan.comments">-- splicetest: ignore-output start
+</stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings"/>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="inserts" enabled="false"/>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[1] DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 1
+DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Update Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- splicetest: ignore-output start
+</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                  <collectionProp name="Asserion.test_strings"/>
+                  <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+                  <boolProp name="Assertion.assume_success">true</boolProp>
+                  <intProp name="Assertion.test_type">16</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="inserts" enabled="false"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[1] WEEEEEEEE TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table" enabled="true">
+            <stringProp name="dataSource">testDatabase</stringProp>
+            <stringProp name="query">--QUERY 1
+WEEEEEEEE TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="TestPlan.comments">-- splicetest: ignore-output start
+</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="95852848">drish</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="setup" enabled="false"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[1] DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table" enabled="true">
+            <stringProp name="dataSource">testDatabase</stringProp>
+            <stringProp name="query">--QUERY 1
+DROP TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="TestPlan.comments">-- splicetest: ignore-output start
+</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings"/>
+              <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[2] CREATE TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_1 BIGINT, column_2 BIGINT)" enabled="true">
+            <stringProp name="dataSource">testDatabase</stringProp>
+            <stringProp name="query">--QUERY 2
+CREATE TABLE ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_1 BIGINT, column_2 BIGINT)</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="TestPlan.comments">-- splicetest: ignore-output stop
+</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="inserts" enabled="true"/>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[3] INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (3273541551943557528, NULL)" enabled="true">
+              <stringProp name="dataSource">testDatabase</stringProp>
+              <stringProp name="query">--QUERY 3
+INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (3273541551943557528, NULL)</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[4] INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (1586239000541596111, 1945754992360114304)" enabled="true">
+              <stringProp name="dataSource">testDatabase</stringProp>
+              <stringProp name="query">--QUERY 4
+INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (1586239000541596111, 1945754992360114304)</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[5] INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (1945754992360114304, 5785817275894421529)" enabled="true">
+              <stringProp name="dataSource">testDatabase</stringProp>
+              <stringProp name="query">--QUERY 5
+INSERT INTO ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table (column_2, column_1) values (1945754992360114304, 5785817275894421529)</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1329970139">1 updates</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="tests" enabled="false"/>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="FUNCTION PARAMETERS TESTS" enabled="false"/>
+          <hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="1" enabled="true"/>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[33] SELECT column_1, AVG(DISTINCT column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 33
+SELECT column_1, AVG(DISTINCT column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- ************** FUNCTION PARAMETERS TESTS **************
+-- *** POSITIVE CASES ***
+-- (POSITIVE) CASE: Max/Min additional option [Distinct] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                  <stringProp name="Assertion.scope">all</stringProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[34] SELECT column_1, AVG(ALL column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 34
+SELECT column_1, AVG(ALL column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- splicetest: ignore-order stop
+-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [Asc]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[35] SELECT column_1, AVG(ALL column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 35
+SELECT column_1, AVG(ALL column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [AscNullFirst]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="2" enabled="true"/>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+                <stringProp name="Assertion.scope">all</stringProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[40] SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 40
+SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[41] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 41
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- splicetest: ignore-order stop
+-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [Asc]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[42] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 42
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [AscNullFirst]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="3" enabled="true"/>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[40] SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 40
+SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1109876116">The resulting value is outside the range for the data type BIGINT1.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[41] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 41
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- splicetest: ignore-order stop
+-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [Asc]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1109876085">The resulting value is outside the range for the data type BIGINT2.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[42] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 42
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [AscNullFirst]
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1109876054">The resulting value is outside the range for the data type BIGINT3.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="4" enabled="true"/>
+            <hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="sc" enabled="true"/>
+              <hashTree>
+                <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[41] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                  <stringProp name="dataSource">testDatabase</stringProp>
+                  <stringProp name="query">--QUERY 41
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                  <stringProp name="queryArguments"></stringProp>
+                  <stringProp name="queryArgumentsTypes"></stringProp>
+                  <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                  <stringProp name="queryType">Select Statement</stringProp>
+                  <stringProp name="resultSetHandler">Store as Object</stringProp>
+                  <stringProp name="resultVariable"></stringProp>
+                  <stringProp name="variableNames"></stringProp>
+                  <stringProp name="TestPlan.comments">-- splicetest: ignore-order stop
+-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [Asc]
+</stringProp>
+                </JDBCSampler>
+                <hashTree/>
+                <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[42] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                  <stringProp name="dataSource">testDatabase</stringProp>
+                  <stringProp name="query">--QUERY 42
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                  <stringProp name="queryArguments"></stringProp>
+                  <stringProp name="queryArgumentsTypes"></stringProp>
+                  <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                  <stringProp name="queryType">Select Statement</stringProp>
+                  <stringProp name="resultSetHandler">Store as Object</stringProp>
+                  <stringProp name="resultVariable"></stringProp>
+                  <stringProp name="variableNames"></stringProp>
+                  <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [AscNullFirst]
+</stringProp>
+                </JDBCSampler>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[40] SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 40
+SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+                <stringProp name="Assertion.scope">all</stringProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="5" enabled="true"/>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[40] SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 40
+SELECT column_1, AVG(ALL column_1) OVER () from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [All] Ordering type [Default]
+-- splicetest: ignore-order start
+</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[41] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 41
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- splicetest: ignore-order stop
+-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [Asc]
+</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="[42] SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST" enabled="true">
+                <stringProp name="dataSource">testDatabase</stringProp>
+                <stringProp name="query">--QUERY 42
+SELECT column_1, AVG(column_1) OVER (ORDER BY column_1 ASC NULLS FIRST) from ${WINDOW_AVG_BIGINT_SCHEMA}.AVG_BIGINT_table ORDER BY 1 NULLS FIRST</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as Object</stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames"></stringProp>
+                <stringProp name="TestPlan.comments">-- (POSITIVE) CASE: Max/Min additional option [Absent] Ordering type [AscNullFirst]
+</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="-1282728449">The resulting value is outside the range for the data type BIGINT.</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <Summariser guiclass="SummariserGui" testclass="Summariser" testname="bigint" enabled="true"/>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultSaver guiclass="ResultSaverGui" testclass="ResultSaver" testname="Save Responses to a file" enabled="true">
+          <stringProp name="FileSaver.filename">${LOGDIR}/${__BeanShell(ctx.getThreadGroup().getName())}/${__samplerName}.</stringProp>
+          <boolProp name="FileSaver.errorsonly">true</boolProp>
+          <boolProp name="FileSaver.skipautonumber">false</boolProp>
+          <boolProp name="FileSaver.skipsuffix">false</boolProp>
+          <boolProp name="FileSaver.successonly">false</boolProp>
+          <stringProp name="FileSaver.numberPadLen">2</stringProp>
+        </ResultSaver>
+        <hashTree/>
+        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>false</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename">${LOGDIR}/bigint/assertion-results.xml</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -56,7 +56,9 @@ class JmxParser:
             if node.nodeName == "JDBCSampler":
                 if not self.is_enabled(node):
                     continue
-                query = self.get_query(node)
+                query_parameters = self.get_query(node)
+                query = query_parameters[0]
+                query_type = query_parameters[1]
                 query_name = self.get_query_name(node)
                 try:
                     expected_results = self.get_expected_results(node)
@@ -66,7 +68,7 @@ class JmxParser:
                 except IncorrectBehaviorException:
                     raise StructureParseException("extra result resolvers, thread: [" + self.threads[
                         self.current_thread].thread_name + "] query name: " + query_name)
-                request = RequestStructure(query)
+                request = RequestStructure(query, query_type)
                 for expected_result in expected_results:
                     request.add_expected_result(expected_result)
                 self.threads[self.current_thread].add_request(request)
@@ -81,9 +83,16 @@ class JmxParser:
 
     @staticmethod
     def get_query(node):
+        query = ""
+        query_type = 0
         for string_prop in node.getElementsByTagName("stringProp"):
             if string_prop.getAttribute("name") == "query":
-                return string_prop.firstChild.nodeValue + ";"
+                query = string_prop.firstChild.nodeValue + ";"
+            if string_prop.getAttribute("name") == "queryType":
+                value = string_prop.firstChild.nodeValue
+                if value == "Update Statement":
+                    query_type = 1
+        return [query, query_type]
 
     @staticmethod
     def get_query_name(node):

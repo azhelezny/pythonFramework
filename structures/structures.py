@@ -1,3 +1,11 @@
+class QueryType:
+    def __init__(self):
+        pass
+
+    Select = 0
+    Update = 1
+
+
 class AssertionField:
     def __init__(self):
         pass
@@ -31,7 +39,8 @@ class ExpectedResult:
 
 
 class RequestStructure:
-    def __init__(self, query):
+    def __init__(self, query, query_type=QueryType.Select):
+        self.query_type = query_type  # type: int
         self.query = query  # type: str
         self.expected_results = []  # type: list[ExpectedResult]
 
@@ -40,6 +49,7 @@ class RequestStructure:
 
     def __str__(self):
         result = "->Query: " + self.query + "\n"
+        result += "->QueryType: " + str(self.query_type) + "\n"
         for expected_result in self.expected_results:
             result += "-->Expected: " + expected_result.request_result + "\n"
             result += "-->Validation type: " + str(expected_result.validation_type) + "\n"
