@@ -26,8 +26,8 @@ class ExpectedResult:
                  assertion_field=AssertionField.ResponseData, ignore_status=False):
         self.request_result = request_result  # type: str
         self.validation_type = validation_type  # type: int
-        self.assertion_field = assertion_field
-        self.ignore_status = ignore_status
+        self.assertion_field = assertion_field  # type: int
+        self.ignore_status = ignore_status  # type: bool
 
 
 class RequestStructure:
