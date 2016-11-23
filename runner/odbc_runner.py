@@ -26,8 +26,8 @@ def run_request(conn, request, variables):
             for row in cursor.fetchall():
                 print "ROW: " + row
                 rows.append(row)
-        except pyodbc.ProgrammingError:
-            print "ERROR"
+        except pyodbc.ProgrammingError as e:
+            print e
     conn.close()
     return {row_count: rows}
 

@@ -92,6 +92,63 @@
         <stringProp name="TestPlan.comments">Disabled due to SPLICE-246</stringProp>
       </ThreadGroup>
       <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="select * from sys.systables order by tableid,tablename" enabled="true">
+          <stringProp name="dataSource">testDatabase</stringProp>
+          <stringProp name="query">select * from sys.systables order by tableid,tablename</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="219200707">TABLEID	TABLENAME	TABLETYPE	SCHEMAID	LOCKGRANULARITY	VERSION	COLSEQUENCE	DELIMITED	ESCAPED	LINES	STORED	LOCATION
+08264012-014b-c29b-a826-000003009390	SYSTABLESTATS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+08264012-014b-c29c-0d2e-000003009390	SYSCOLUMNSTATS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+08264013-014b-c29c-947b-000003009390	SYSPHYSICALSTATS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+1e2700f9-0158-91ab-488d-00000c541898	TEST	T	906400e0-0158-91ab-488d-00000c541898	R	2.0	3	null	null	null	null	null
+2057c01b-0103-0e39-b8e7-00000010f010	SYSROUTINEPERMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+286cc01e-0103-0e39-b8e7-00000010f010	SYSCOLPERMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+691df6e2-de85-4311-827b-8e00e38d7aab	SYSBACKUPJOBS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+6e205c88-4c1b-464a-b0ab-865d64b3279d	SYSBACKUP	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000000-00d1-15f7-ab70-000a0a0b1500	SYSSTATEMENTS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000000-00d3-e222-873f-000a0a0b1900	SYSFILES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000010-00d0-fd77-3ed8-000a0a0b1900	SYSCONGLOMERATES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000018-00d0-fd77-3ed8-000a0a0b1900	SYSTABLES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+8000001e-00d0-fd77-3ed8-000a0a0b1900	SYSCOLUMNS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000022-00d0-fd77-3ed8-000a0a0b1900	SYSSCHEMAS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+8000002f-00d0-fd77-3ed8-000a0a0b1900	SYSCONSTRAINTS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000039-00d0-fd77-3ed8-000a0a0b1900	SYSKEYS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+8000003e-00d0-fd77-3ed8-000a0a0b1900	SYSDEPENDS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+8000004d-00d0-fd77-3ed8-000a0a0b1900	SYSVIEWS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80000056-00d0-fd77-3ed8-000a0a0b1900	SYSCHECKS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+8000005b-00d0-fd77-3ed8-000a0a0b1900	SYSFOREIGNKEYS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+80220011-0158-91ab-488d-00000c541898	SYSCOLUMNSTATISTICS	V	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+9810800c-0121-c5e1-a2f5-00000043e718	SYSPERMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+9810800c-0121-c5e2-e794-00000043e718	SYSSEQUENCES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+9810800c-0134-14a5-40c1-000004f61f90	SYSUSERS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+a0527143-4f6e-42df-98ab-b1dff6bea7db	SYSBACKUPITEMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+b8450018-0103-0e39-b8e7-00000010f010	SYSTABLEPERMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+b8450020-0103-0e39-b8e7-00000010f010	SYSSCHEMAPERMS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+c013800d-00d7-c025-4809-000a0a411200	SYSTRIGGERS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+c013800d-00d7-ddbd-08ce-000a0a411400	SYSALIASES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+c013800d-00f8-5b70-bea3-00000019ed88	SYSDUMMY1	S	c013800d-00f8-5b53-28a9-00000019ed88	R	2.0	-1	null	null	null	null	null
+cb4d2219-fd7a-4003-9e42-beff555a365c	SYSBACKUPFILESET	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+e03f4017-0115-382c-08df-ffffe275b270	SYSROLES	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+f48ad515-013d-35d6-f400-6915f6177d2f	SYSPRIMARYKEYS	S	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+f81e0010-0158-91ab-488d-00000c541898	SYSTABLESTATISTICS	V	8000000d-00d0-fd77-3ed8-000a0a0b1900	R	2.0	-1	null	null	null	null	null
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="setup" enabled="true"/>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="drop table ${SCHEMA}.test" enabled="true">
