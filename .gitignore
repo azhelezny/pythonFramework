@@ -82,3 +82,4 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+!libsplice_odbc.so

@@ -9,10 +9,13 @@ def run_request(request):
         autocommit=True)
     cursor = conn.cursor()
     cursor.execute(request.query)
+    row_count = str(cursor.rowcount)
     rows = []
     if request.query_type == QueryType.Select:
-        for row in cursor.fetchall():
-            rows.append(row)
-    elif request.query_type == QueryType.Update:
-        rows.append(str(cursor.rowcount))
-    return rows
+        try:
+            for row in cursor.fetchall():
+                rows.append(row)
+        except pyodbc.ProgrammingError:
+            return {row_count, {}}
+            pass
+    return {row_count, rows}

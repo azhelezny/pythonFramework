@@ -14,7 +14,6 @@ threads = parser.threads
 for thread in threads:
     print thread.thread_name
     for request in thread.requests:
+        print "REQUEST\n" + request.__str__()
         results = run_request(request)
-        print results
-
-
+        print "RESULTS\n" + results
