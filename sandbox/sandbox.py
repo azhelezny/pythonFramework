@@ -11,9 +11,13 @@ file_path = "../resources/example.jmx"
 parser = JmxParser(file_path)
 parser.parse_jmx()
 threads = parser.threads
+variables = parser.variables
 for thread in threads:
     print thread.thread_name
     for request in thread.requests:
         print "REQUEST\n" + request.__str__()
-        results = run_request(request)
-        print "RESULTS\n" + results
+        results = run_request(request, variables)
+        print "RESULTS\n"
+        for key, value in results.iteritems():
+            print key
+            print value
