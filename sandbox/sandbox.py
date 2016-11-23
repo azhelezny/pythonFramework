@@ -1,8 +1,6 @@
 import os
 import sys
 
-import pyodbc
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from jmx_parser.JmxParser import JmxParser
