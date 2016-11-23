@@ -10,13 +10,7 @@ def open_connection(autocmt=True):
 
 
 def run_request(conn, request, variables):
-    cursor = ""
-    try:
-        cursor = conn.cursor()
-    except Exception as e:
-        if e.__class__ == pyodbc.ProgrammingError:
-            conn = open_connection(True)
-            cursor = conn.cursor()
+    cursor = conn.cursor()
     print "query:" + replace_variables(request.query, variables)
     cursor.execute(replace_variables(request.query, variables))
     row_count = str(cursor.rowcount)
@@ -24,16 +18,15 @@ def run_request(conn, request, variables):
     if request.query_type == QueryType.Select:
         try:
             for row in cursor.fetchall():
-                print "ROW: " + row
+                print "ROW: " + str(row)
                 rows.append(row)
         except pyodbc.ProgrammingError as e:
             print e
-    conn.close()
     return {row_count: rows}
 
 
 def replace_variables(query, variables):
-    result = ""
+    result = query
     for key, value in variables.iteritems():
         result = query.replace("${" + key + "}", value)
     return result

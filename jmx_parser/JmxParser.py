@@ -14,7 +14,7 @@ class JmxParser:
         # with io.open(file_path, 'r', encoding="utf-8", errors="surrogateescape") as myfile:
         with io.open(file_path, 'r') as myfile:
             file_data = myfile.read()
-        self.doc = minidom.parseString(replace_illegal_xml_characters(file_data))
+        self.doc = minidom.parseString(file_data)
         # self.doc = minidom.parse(file_path)
         self.current_thread = 0
 
@@ -34,13 +34,13 @@ class JmxParser:
                     value = ""
                     for var in var_parameters:
                         if var.getAttribute("name") == "Argument.name":
-                            name = var.firstChild.nodeValue
+                            name = str(var.firstChild.nodeValue)
                         if var.getAttribute("name") == "Argument.value":
-                            value = var.firstChild.nodeValue
+                            value = str(var.firstChild.nodeValue)
                     self.variables[name] = value
         thread_sets = self.doc.getElementsByTagName("ThreadGroup")
         for thread in thread_sets:
-            self.threads.append(JmxThread(thread.getAttribute("testname")))
+            self.threads.append(str(JmxThread(thread.getAttribute("testname"))))
             self.current_thread = len(self.threads) - 1
             # hash tree after ThreadGroup
             hash_tree = thread.nextSibling.nextSibling
@@ -87,7 +87,7 @@ class JmxParser:
         query_type = 0
         for string_prop in node.getElementsByTagName("stringProp"):
             if string_prop.getAttribute("name") == "query":
-                query = string_prop.firstChild.nodeValue + ";"
+                query = str(string_prop.firstChild.nodeValue + ";")
             if string_prop.getAttribute("name") == "queryType":
                 value = string_prop.firstChild.nodeValue
                 if value == "Update Statement":
@@ -96,7 +96,7 @@ class JmxParser:
 
     @staticmethod
     def get_query_name(node):
-        return node.getAttribute("testname")
+        return str(node.getAttribute("testname"))
 
     @staticmethod
     def get_expected_results(node):
@@ -125,7 +125,7 @@ class JmxParser:
         for assertion_string_node in response_assertion_node.getElementsByTagName("collectionProp"):
             for string_prop_node in assertion_string_node.getElementsByTagName("stringProp"):
                 if string_prop_node.hasChildNodes():
-                    expected_outputs.append(string_prop_node.firstChild.nodeValue)
+                    expected_outputs.append(str(string_prop_node.firstChild.nodeValue))
         if len(expected_outputs) == 0:
             expected_results.append(ExpectedResult("", assertion_type, assertion_field, ignore_status_filed))
         else:

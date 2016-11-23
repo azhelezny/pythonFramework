@@ -17,6 +17,7 @@ for thread in threads:
     conn = open_connection(True)
     print conn.autocommit
     for request in thread.requests:
+        "simple string"
         print "REQUEST\n" + request.__str__()
         results = run_request(conn, request, variables)
         print "RESULTS\n"
