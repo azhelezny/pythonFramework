@@ -40,7 +40,7 @@ class JmxParser:
                     self.variables[name] = value
         thread_sets = self.doc.getElementsByTagName("ThreadGroup")
         for thread in thread_sets:
-            self.threads.append(str(JmxThread(thread.getAttribute("testname"))))
+            self.threads.append(JmxThread(thread.getAttribute("testname")))
             self.current_thread = len(self.threads) - 1
             # hash tree after ThreadGroup
             hash_tree = thread.nextSibling.nextSibling
