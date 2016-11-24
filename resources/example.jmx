@@ -290,6 +290,28 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="insert into ${SCHEMA}.test(id, v, b) values (5, &apos;pish5&apos;, true)" enabled="true">
+              <stringProp name="dataSource">testDatabase</stringProp>
+              <stringProp name="query">insert into ${SCHEMA}.drish(id, v, b) values (5, &apos;pish5&apos;, true)</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="1488625775">Table/View &apos;BASIC.DRISH&apos; does not exist.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
           </hashTree>
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="tests" enabled="true"/>
