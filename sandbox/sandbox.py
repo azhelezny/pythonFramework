@@ -21,7 +21,6 @@ for thread in threads:
         print "REQUEST\n" + request.__str__()
         results = run_request(conn, request, variables)
         print "RESULTS\n"
-        for key, value in results.iteritems():
-            print key
+        for value in results:
             print value
     conn.close()
