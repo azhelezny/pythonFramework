@@ -343,6 +343,33 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="select * from ${SCHEMA}.test order by id asc" enabled="true">
+            <stringProp name="dataSource">testDatabase</stringProp>
+            <stringProp name="query">select * from ${SCHEMA}.test order by id asc</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">${QUERY_TIMEOUT}</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-537259268">ID	V	B
+1	pish	true
+2	pish2	false
+3	pish3	true
+4	pish4	false
+</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <Summariser guiclass="SummariserGui" testclass="Summariser" testname="bigint" enabled="true"/>
         <hashTree/>

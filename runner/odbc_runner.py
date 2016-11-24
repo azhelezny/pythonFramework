@@ -12,9 +12,11 @@ def open_connection(autocmt=True):
 def run_request(conn, request, variables):
     cursor = conn.cursor()
     exception = None
-    print "query:" + replace_variables(request.query, variables)
+    selection_error = None
+    query = replace_variables(request.query, variables)
+    print "Running query:" + query
     try:
-        cursor.execute(replace_variables(request.query, variables))
+        cursor.execute(query)
     except Exception as e:
         exception = e
     row_count = str(cursor.rowcount)
@@ -24,9 +26,9 @@ def run_request(conn, request, variables):
             for row in cursor.fetchall():
                 print "ROW: " + str(row)
                 rows.append(row)
-        except pyodbc.ProgrammingError as e:
-            print e
-    return [row_count, rows, exception]
+        except Exception as e2:
+            selection_error = e2
+    return {"row_count": row_count, "rows": rows, "exception": exception, "selection_error": selection_error}
 
 
 def replace_variables(query, variables):
