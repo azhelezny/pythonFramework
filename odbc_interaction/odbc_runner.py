@@ -1,6 +1,6 @@
 import pyodbc
 
-from structures.structures import QueryType
+from jmx_interaction.structures import QueryType
 
 
 def open_connection(autocmt=True):
@@ -24,7 +24,6 @@ def run_request(conn, request, variables):
     if request.query_type == QueryType.Select:
         try:
             for row in cursor.fetchall():
-                print "ROW: " + str(row)
                 rows.append(row)
         except Exception as e2:
             selection_error = e2

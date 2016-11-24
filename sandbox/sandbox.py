@@ -3,8 +3,8 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from jmx_parser.JmxParser import JmxParser
-from runner.odbc_runner import run_request, open_connection
+from jmx_interaction.JmxParser import JmxParser
+from odbc_interaction.odbc_runner import run_request, open_connection
 
 file_path = "../resources/example.jmx"
 
@@ -18,7 +18,8 @@ for thread in threads:
     print conn.autocommit
     for request in thread.requests:
         results = run_request(conn, request, variables)
-        print "RESULTS\n"
+        print "RESULTS"
         for key, value in results.iteritems():
             print key, value
+        print "\n"
     conn.close()

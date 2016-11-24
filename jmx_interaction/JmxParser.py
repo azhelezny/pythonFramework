@@ -1,9 +1,8 @@
+import io
 from xml.dom import minidom
 
-import io
-
-from structures.structures import JmxThread, ExpectedResult, RequestStructure, AssertionField, ValidationType
-from utils.util import StructureParseException, IncorrectBehaviorException, replace_illegal_xml_characters
+from jmx_interaction.structures import JmxThread, ExpectedResult, RequestStructure, AssertionField, ValidationType
+from utils.util import StructureParseException, IncorrectBehaviorException
 
 
 class JmxParser:
