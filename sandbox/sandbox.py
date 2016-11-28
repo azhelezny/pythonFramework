@@ -22,7 +22,7 @@ for thread in threads:
         print "Results"
         for key, value in results.iteritems():
             print key, ":", value
-        print "Validation Result:" + str(validate_result(request, results))
+        print "Validation Result:" + str(validate_result(request, results, variables))
 
         print "\n"
     conn.close()

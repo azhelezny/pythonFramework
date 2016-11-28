@@ -19,7 +19,7 @@ to validate SELECT:
 """
 
 
-def validate_result(request, actual_result):
+def validate_result(request, actual_result, variables):
     """
     @type request: jmx_interaction.structures.RequestStructure
     @type actual_result: dict
@@ -44,7 +44,7 @@ def validate_result(request, actual_result):
         return {False: "unexpected error: " + str(expected_selection_error)}
 
     for expected_result in request.expected_results:
-        expected_result = replace_variables(expected_result)
+        expected_result = replace_variables(expected_result, variables)
         if query_type == QueryType.Update:
             if assertion_field == AssertionField.ResponseMessage:
                 return {
