@@ -1,6 +1,8 @@
 import os
 import sys
 
+from odbc_interaction.result_validator import get_number_from_message, validate_result
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from jmx_interaction.JmxParser import JmxParser
@@ -18,8 +20,11 @@ for thread in threads:
     print conn.autocommit
     for request in thread.requests:
         results = run_request(conn, request, variables)
-        print "RESULTS"
+        print "Request" + request.__str__()
+        print "Results"
         for key, value in results.iteritems():
             print key, value
+        print "Validation Result:" + str(validate_result(request, results))
+
         print "\n"
     conn.close()
