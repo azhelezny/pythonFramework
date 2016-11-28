@@ -24,7 +24,6 @@ variables = parser.variables
 for thread in threads:
     print thread.thread_name
     conn = open_connection(True)
-    print conn.autocommit
     for request in thread.requests:
         results = run_request(conn, request, variables)
         print "Request" + request.__str__()

@@ -1,7 +1,21 @@
 import re
 
-from jmx_interaction.structures import RequestStructure, QueryType, AssertionField, ValidationType
-from utils.util import IncorrectValidationException
+from jmx_interaction.structures import QueryType, AssertionField, ValidationType
+
+"""
+exceptions can be only for SELECT "table doesn't exists" for example
+responses also can have variables
+
+"update queries" can be validated using row_count
+to validate UPDATE:
+    if ResponseMessage - only check that row_count == expected (row/s updated)
+    if ResponseText - extract number of expected updates from expected result, compare it with row_count
+
+to validate SELECT:
+    if ResponseMessage - expected result should be smartly compared with "exception".message
+    if ResponseText - expected result should be converted to list of dicts and compared to result of request
+        names of columns should be ignored
+"""
 
 
 def validate_result(request, actual_result):
@@ -14,6 +28,7 @@ def validate_result(request, actual_result):
     validation_type = None
     """:type: ValidationType"""
     ignore_status = None
+
     for expected_result in request.expected_results:
         assertion_field = expected_result.assertion_field
         validation_type = expected_result.validation_type
@@ -22,8 +37,10 @@ def validate_result(request, actual_result):
 
     expected_selection_error = actual_result.get("selection_error")
     actual_exception = actual_result.get("exception")
-    if (actual_exception is not None or expected_selection_error is not None) and ignore_status:
-        return {False: str(actual_exception)}
+    if actual_exception is not None and not ignore_status:
+        return {False: "unexpected error: " + str(actual_exception)}
+    if expected_selection_error is not None and not ignore_status:
+        return {False: "unexpected error: " + str(expected_selection_error)}
 
     for expected_result in request.expected_results:
         if query_type == QueryType.Update:
@@ -41,33 +58,14 @@ def validate_result(request, actual_result):
                     return {True: ""}
         if request.query_type == QueryType.Select:
             if assertion_field == AssertionField.ResponseMessage:
-                if expected_selection_error is not None or actual_exception is not None:
-                    if ignore_status:
-                        return {True: "error message was expected"}
-                    else:
-                        return {False: "error message was not expected"}
-                else:
-                    # response message always contains error
-                    return {False: "error message absent"}
+                if expected_selection_error is not None:
+                    return {True: "error message was expected: " + str(expected_selection_error)}
+                if actual_exception is not None:
+                    return {True: "error message was expected: " + str(actual_exception)}
+                return {False: "error message was expected but absent"}
             if assertion_field == AssertionField.ResponseData:
                 return validate_using_validation_type(get_headless_select_result(expected_result.request_result),
                                                       actual_result.get("rows"), validation_type)
-
-
-"""
-exceptions can be only for SELECT "table doesn't exists" for example
-responses also can have variables
-
-"update queries" can be validated using row_count
-to validate UPDATE:
-    if ResponseMessage - only check that row_count == expected (row/s updated)
-    if ResponseText - extract number of expected updates from expected result, compare it with row_count
-
-to validate SELECT:
-    if ResponseMessage - expected result should be smartly compared with "exception".message
-    if ResponseText - expected result should be converted to list of dicts and compared to result of request
-        names of columns should be ignored
-"""
 
 
 def validate_using_validation_type(expected, actual, validation_type):
