@@ -19,14 +19,17 @@ def validate_result(request, actual_result):
         validation_type = expected_result.validation_type
         ignore_status = expected_result.ignore_status
         break
+
+    expected_selection_error = actual_result.get("selection_error")
     actual_exception = actual_result.get("exception")
-    if actual_exception is not None and ignore_status:
+    if (actual_exception is not None or expected_selection_error is not None) and ignore_status:
         return {False: str(actual_exception)}
 
     for expected_result in request.expected_results:
         if query_type == QueryType.Update:
             if assertion_field == AssertionField.ResponseMessage:
-                return {True: "TODO: add validation here when response message in will be presented in exception error message"}
+                return {
+                    True: "TODO: add validation here when response message in will be presented in exception error message"}
             if assertion_field == AssertionField.ResponseData:
                 expected = expected_result.request_result
                 expected_row_count = get_number_from_message(expected)
@@ -34,16 +37,19 @@ def validate_result(request, actual_result):
                 if expected_row_count != actual:
                     return {
                         False: "expected row count [" + expected + "] was not found in actual result [" + actual + "] full expected result: [" + expected + "]"}
-            else:
-                return {True: ""}
+                else:
+                    return {True: ""}
         if request.query_type == QueryType.Select:
             if assertion_field == AssertionField.ResponseMessage:
-                expected = expected_result.request_result
-                actual = ""
-                if actual_exception is not None:
-                    actual = str(actual_exception)
-                return validate_using_validation_type(expected, actual, validation_type)
-            if assertion_field== AssertionField.ResponseData:
+                if expected_selection_error is not None or actual_exception is not None:
+                    if ignore_status:
+                        return {True: "error message was expected"}
+                    else:
+                        return {False: "error message was not expected"}
+                else:
+                    # response message always contains error
+                    return {False: "error message absent"}
+            if assertion_field == AssertionField.ResponseData:
                 pass
 
 
@@ -53,7 +59,7 @@ responses also can have variables
 
 "update queries" can be validated using row_count
 to validate UPDATE:
-    if ResponseMessage - only check that row_count == 0
+    if ResponseMessage - only check that row_count == expected (row/s updated)
     if ResponseText - extract number of expected updates from expected result, compare it with row_count
 
 to validate SELECT:
@@ -96,3 +102,13 @@ def get_number_from_message(message):
     m = re.match("^(\d+)", message)
     if m:
         return m.group(1)
+
+
+def get_headless_select_result(select_result):
+    """
+    @type select_result: str
+    """
+    index = select_result.find("\n")
+    if index == -1:
+        return ""
+    return select_result[index + 1:]

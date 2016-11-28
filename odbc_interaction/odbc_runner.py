@@ -15,7 +15,6 @@ def run_request(conn, request, variables):
     exception = None
     selection_error = None
     query = replace_variables(request.query, variables)
-    print "Running query:" + query
     try:
         cursor.execute(query)
     except Exception as e:

@@ -9,6 +9,14 @@ from odbc_interaction.odbc_runner import run_request, open_connection
 
 file_path = "../resources/example.jmx"
 
+line = """ID	V	B
+1	pish	true
+2	pish2	false
+3	pish3	true
+4	pish4	false"""
+
+
+
 parser = JmxParser(file_path)
 parser.parse_jmx()
 threads = parser.threads
@@ -19,7 +27,7 @@ for thread in threads:
     print conn.autocommit
     for request in thread.requests:
         results = run_request(conn, request, variables)
-        print "Request" + request.__str__()
+        print "Request" + request.query
         print "Results"
         for key, value in results.iteritems():
             print key, value
