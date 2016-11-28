@@ -18,10 +18,10 @@ for thread in threads:
     conn = open_connection(True)
     for request in thread.requests:
         results = run_request(conn, request, variables)
-        print "Request" + request.__str__()
+        print "Request: [" + request.query + "] assume success [" + str(request.expected_results[0].ignore_status) + "]"
         print "Results"
         for key, value in results.iteritems():
-            print key, value
+            print key, ":", value
         print "Validation Result:" + str(validate_result(request, results))
 
         print "\n"
