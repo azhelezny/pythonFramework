@@ -24,9 +24,10 @@ def run_request(conn, request, variables):
     if request.query_type == QueryType.Select:
         try:
             for row in cursor.fetchall():
-                for i in range(len(row)):
-                    rows += row[i]
-                rows += "\n"
+                row_count = len(row)
+                for i in range(row_count - 1):
+                    rows += str(row[i]) + "\t"
+                rows += str(row[row_count - 1]) + "\n"
         except Exception as e2:
             selection_error = e2
     return {"row_count": row_count, "rows": rows, "exception": exception, "selection_error": selection_error}

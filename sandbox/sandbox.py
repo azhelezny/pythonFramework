@@ -27,7 +27,7 @@ for thread in threads:
     print conn.autocommit
     for request in thread.requests:
         results = run_request(conn, request, variables)
-        print "Request" + request.query
+        print "Request" + request.__str__()
         print "Results"
         for key, value in results.iteritems():
             print key, value
