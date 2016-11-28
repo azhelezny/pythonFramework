@@ -304,7 +304,7 @@
             <hashTree>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="response assertion" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1488625775">Table/View &apos;BASIC.DRISH&apos; does not exist.</stringProp>
+                  <stringProp name="-2089604648">Table/View &apos;${SCHEMA}.DRISH&apos; does not exist.</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>

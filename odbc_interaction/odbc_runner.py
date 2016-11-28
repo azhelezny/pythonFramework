@@ -20,11 +20,13 @@ def run_request(conn, request, variables):
     except Exception as e:
         exception = e
     row_count = str(cursor.rowcount)
-    rows = []
+    rows = ""
     if request.query_type == QueryType.Select:
         try:
             for row in cursor.fetchall():
-                rows.append(row)
+                for i in range(len(row)):
+                    rows += row[i]
+                rows += "\n"
         except Exception as e2:
             selection_error = e2
     return {"row_count": row_count, "rows": rows, "exception": exception, "selection_error": selection_error}
