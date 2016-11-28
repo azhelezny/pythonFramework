@@ -20,14 +20,13 @@ def validate_result(request, actual_result):
         ignore_status = expected_result.ignore_status
         break
     actual_exception = actual_result.get("exception")
-    if actual_exception is not None and not ignore_status:
+    if actual_exception is not None and ignore_status:
         return {False: str(actual_exception)}
 
     for expected_result in request.expected_results:
         if query_type == QueryType.Update:
             if assertion_field == AssertionField.ResponseMessage:
-                # todo: add validation here when response message in will be presented in exception error message
-                return {True: ""}
+                return {True: "TODO: add validation here when response message in will be presented in exception error message"}
             if assertion_field == AssertionField.ResponseData:
                 expected = expected_result.request_result
                 expected_row_count = get_number_from_message(expected)
@@ -44,6 +43,8 @@ def validate_result(request, actual_result):
                 if actual_exception is not None:
                     actual = str(actual_exception)
                 return validate_using_validation_type(expected, actual, validation_type)
+            if assertion_field== AssertionField.ResponseData:
+                pass
 
 
 """
