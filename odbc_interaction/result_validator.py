@@ -45,7 +45,7 @@ def validate_result(request, actual_result, variables):
 
     for expected_result in request.expected_results:
         if query_type == QueryType.Update:
-            if assertion_field == AssertionField.ResponseMessage:
+            if assertion_field == AssertionField.ResponseMessage or ignore_status:
                 return {
                     True: "TODO: add validation here when response message in will be presented in exception error message"}
             if assertion_field == AssertionField.ResponseData:
