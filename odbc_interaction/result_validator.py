@@ -50,7 +50,8 @@ def validate_result(request, actual_result):
                     # response message always contains error
                     return {False: "error message absent"}
             if assertion_field == AssertionField.ResponseData:
-                pass
+                return validate_using_validation_type(get_headless_select_result(expected_result.request_result),
+                                                      actual_result.get("rows"), validation_type)
 
 
 """
