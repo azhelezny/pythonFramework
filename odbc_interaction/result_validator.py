@@ -58,10 +58,10 @@ def validate_result(request, actual_result):
                     return {True: ""}
         if request.query_type == QueryType.Select:
             if assertion_field == AssertionField.ResponseMessage:
-                if expected_selection_error is not None:
-                    return {True: "error message was expected: " + str(expected_selection_error)}
                 if actual_exception is not None:
                     return {True: "error message was expected: " + str(actual_exception)}
+                if expected_selection_error is not None:
+                    return {True: "error message was expected: " + str(expected_selection_error)}
                 return {False: "error message was expected but absent"}
             if assertion_field == AssertionField.ResponseData:
                 return validate_using_validation_type(get_headless_select_result(expected_result.request_result),
