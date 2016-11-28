@@ -1,6 +1,7 @@
 import re
 
 from jmx_interaction.structures import QueryType, AssertionField, ValidationType
+from utils.util import replace_variables
 
 """
 exceptions can be only for SELECT "table doesn't exists" for example
@@ -43,6 +44,7 @@ def validate_result(request, actual_result):
         return {False: "unexpected error: " + str(expected_selection_error)}
 
     for expected_result in request.expected_results:
+        expected_result = replace_variables(expected_result)
         if query_type == QueryType.Update:
             if assertion_field == AssertionField.ResponseMessage:
                 return {
