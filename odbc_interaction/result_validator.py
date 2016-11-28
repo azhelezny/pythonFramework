@@ -44,7 +44,6 @@ def validate_result(request, actual_result, variables):
         return {False: "unexpected error: " + str(expected_selection_error)}
 
     for expected_result in request.expected_results:
-        expected_result = replace_variables(expected_result, variables)
         if query_type == QueryType.Update:
             if assertion_field == AssertionField.ResponseMessage:
                 return {
@@ -66,8 +65,9 @@ def validate_result(request, actual_result, variables):
                     return {True: "error message was expected: " + str(expected_selection_error)}
                 return {False: "error message was expected but absent"}
             if assertion_field == AssertionField.ResponseData:
-                return validate_using_validation_type(get_headless_select_result(expected_result.request_result),
-                                                      actual_result.get("rows"), validation_type)
+                return validate_using_validation_type(
+                    replace_variables(get_headless_select_result(expected_result.request_result), variables),
+                    actual_result.get("rows"), validation_type)
 
 
 def validate_using_validation_type(expected, actual, validation_type):
