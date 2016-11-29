@@ -1,7 +1,6 @@
 import pyodbc
 
 from jmx_interaction.structures import QueryType
-from utils.util import replace_variables
 
 
 def open_connection(autocmt=True):
@@ -10,11 +9,11 @@ def open_connection(autocmt=True):
         autocommit=autocmt)
 
 
-def run_request(conn, request, variables):
+def run_request(conn, request):
     cursor = conn.cursor()
     exception = None
     selection_error = None
-    query = replace_variables(request.query, variables)
+    query = request.query
     try:
         cursor.execute(query)
     except Exception as e:

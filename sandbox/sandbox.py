@@ -17,7 +17,7 @@ for thread in threads:
     print thread.thread_name
     conn = open_connection(True)
     for request in thread.requests:
-        results = run_request(conn, request, variables)
+        results = run_request(conn, request)
         print "Request: [" + request.query + "] assume success [" + str(request.expected_results[0].ignore_status) + "]"
         print "Results"
         for key, value in results.iteritems():
