@@ -13,22 +13,22 @@ class RunInfo:
         self.status = status
         self.start = start_time
         self.stop = stop_time
-        self.duration = stop_time - start_time
         self.total_tests = total_tests
         self.failed_tests = 0
         if status == TestStatus.FAILED:
             self.failed_tests += 1
 
+    def get_duration(self):
+        return self.stop - self.start
+
     def sum_run_info(self, run_info):
         """
         @type run_info: RunInfo
         """
-        if run_info.start < self.start:
+        if run_info.start < self.start or self.start == 0:
             self.start = run_info.start
         if run_info.stop > self.stop:
             self.stop = run_info.stop
-
-        self.duration = self.stop - self.start
 
         if self.status == TestStatus.SKIPPED and run_info.status != TestStatus.SKIPPED:
             self.status = run_info.status

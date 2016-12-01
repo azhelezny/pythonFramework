@@ -25,7 +25,7 @@ def log_thread_header(file_path, thread_name):
     </head>
 
     <body>
-    <h2 class=\"testName\" id=\"${temporary_status\">""" + title + """</h2>
+    <h2 class=\"testName\" id=\"${temporary_status}\">""" + title + """</h2>
     <h3> Started: ${temporary_start_time} </h3>
     <h3> Finished: ${temporary_stop_time} </h3>
     <h3> Time Spend: ${temporary_duration} </h3>
@@ -45,10 +45,10 @@ def log_entry(file_path, request, request_execution_result):
     diff_operations_div_id = "diffOperations_" + entry_id
     diff_content_table_id = "diffContent_" + entry_id
 
-    file_content = table_entry_top + """<pre id='""" + diff_operations_div_id + """' class ='diffContentTableClass'>\n
-                    """ + html.escape(request.__str__()) + """</pre>
-                    <pre id='""" + diff_content_table_id + """' style='display: none'>\n
-                    """ + html.escape(str(request_execution_result)) + "</pre>"
+    file_content = table_entry_top + """<pre id='""" + diff_operations_div_id + """' class ='diffContentTableClass'>
+""" + html.escape(request.__str__()) + """</pre>
+<pre id='""" + diff_content_table_id + """' style='display: none'>\n
+""" + html.escape(str(request_execution_result)) + "</pre>"
     file_content += table_entry_bottom
     write_str_to_file(file_path, file_content)
 
