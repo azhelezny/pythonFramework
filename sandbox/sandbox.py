@@ -3,7 +3,7 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from odbc_interaction.result_validator import get_number_from_message, validate_result
+from odbc_interaction.result_validator import validate_result
 from jmx_interaction.JmxParser import JmxParser
 from odbc_interaction.odbc_runner import run_request, open_connection
 

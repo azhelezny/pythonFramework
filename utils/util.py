@@ -20,6 +20,11 @@ def replace_variables(query, variables):
     return result
 
 
+def write_str_to_file(file_path, string_to_write):
+    with open(file_path, "a") as html_file:
+        html_file.write(string_to_write)
+
+
 def replace_illegal_xml_characters(str_to_replace):
     RE_XML_ILLEGAL = u'([\u0000-\u0008\u000b-\u000c\u000e-\u001f\ufffe-\uffff])' + \
                      u'|' + \

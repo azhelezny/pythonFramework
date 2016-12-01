@@ -48,13 +48,13 @@ class RequestStructure:
         self.expected_results.append(expected_result)
 
     def __str__(self):
-        result = "->Query: " + self.query + "\n"
-        result += "->QueryType: " + str(self.query_type) + "\n"
+        result = self.query + "\n"
+        result += "- >QueryType: " + str(self.query_type) + "\n"
         for expected_result in self.expected_results:
-            result += "-->Expected: " + expected_result.request_result + "\n"
-            result += "-->Validation type: " + str(expected_result.validation_type) + "\n"
-            result += "-->Assertion field: " + str(expected_result.assertion_field) + "\n"
-            result += "-->Ignore Status: " + str(expected_result.ignore_status) + "\n"
+            result += "-- >Expected: " + expected_result.request_result + "\n"
+            result += "-- >Validation type: " + str(expected_result.validation_type) + "\n"
+            result += "-- >Assertion field: " + str(expected_result.assertion_field) + "\n"
+            result += "-- >Ignore Status: " + str(expected_result.ignore_status)
         return result
 
 
