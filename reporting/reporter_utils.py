@@ -8,7 +8,7 @@ def get_unix_timestamp():
 
 def get_date_as_string(timestamp):
     date = datetime.datetime.fromtimestamp(timestamp)
-    return str(date).replace(":", "-")
+    return str(date).replace(":", "-").replace(" ","__")
 
 
 def get_time_as_string(time_value):
