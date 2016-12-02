@@ -2,6 +2,7 @@ import os
 
 from reporting import styles
 from reporting.reporter_utils import replace_in_file, get_date_as_string, get_time_as_string
+from reporting.test_status import TestStatus
 from utils.util import write_str_to_file
 
 
@@ -67,6 +68,7 @@ def log_thread_status(file_path, thread_name, run_info):
 def log_common_footer(file_path, common_run_info):
     """
     @type file_path:str
+    @type common_run_info:reporting.run_info.RunInfo
     """
     file_content = """
      </table>
@@ -93,3 +95,8 @@ def log_common_footer(file_path, common_run_info):
     write_str_to_file(file_path + "/css/main.css", styles.getMainCssFile)
     write_str_to_file(file_path + "/css/composite.css", styles.getTestCssFile)
     write_str_to_file(file_path + "/css/classes.css", styles.getClassCssFile)
+
+    str_status_result = "PASSED"
+    if common_run_info.status != TestStatus.PASSED:
+        str_status_result = "FAILED"
+    write_str_to_file(file_path + "/status.txt", str_status_result)
