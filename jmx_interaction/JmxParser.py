@@ -9,12 +9,10 @@ class JmxParser:
     def __init__(self, file_path):
         self.threads = []
         self.variables = {}
-        file_data = ""
         # with io.open(file_path, 'r', encoding="utf-8", errors="surrogateescape") as myfile:
         with io.open(file_path, 'r') as myfile:
             file_data = myfile.read()
         self.doc = minidom.parseString(file_data)
-        # self.doc = minidom.parse(file_path)
         self.current_thread = 0
 
     def get_variables(self):
