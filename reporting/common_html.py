@@ -96,7 +96,10 @@ def log_common_footer(file_path, common_run_info):
     write_str_to_file(file_path + "/css/composite.css", styles.getTestCssFile)
     write_str_to_file(file_path + "/css/classes.css", styles.getClassCssFile)
 
-    str_status_result = "PASSED"
+    str_status_result = "GENERAL_RUN_INFO:"
     if common_run_info.status != TestStatus.PASSED:
-        str_status_result = "FAILED"
-    write_str_to_file(file_path + "/status.txt", str_status_result)
+        str_status_result += "FAILED"
+    else:
+        str_status_result += "PASSED"
+
+    print str_status_result
