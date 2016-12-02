@@ -23,14 +23,14 @@ jmx_file = args.file
 threads_to_run = args.threads
 
 
-def run_tests(jmx_file, threads_to_run):
-    parser = JmxParser(jmx_file)
+def run_tests(jmx_file_argument, threads_to_run_argument):
+    parser = JmxParser(jmx_file_argument)
     parser.parse_jmx()
     threads = parser.threads
     variables = parser.variables
 
     for thread in threads:
-        if thread.thread_name not in threads_to_run and threads_to_run is not None and len(threads_to_run) > 0:
+        if thread.thread_name not in threads_to_run_argument and threads_to_run_argument is not None and len(threads_to_run_argument) > 0:
             threads.remove(thread)
 
     current_date = get_date_as_string(get_unix_timestamp())
